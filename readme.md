@@ -40,3 +40,16 @@ chameleon框架（推荐，原生支持跨端开发）
 npm install @escook/request-miniprogram
 ```
 
+全局状态插件
+
+```
+# wx官网文档推荐
+npm i mobx-miniprogram mobx-miniprogram-bindings
+# 基于uni-app则是vuex
+npm i vuex
+
+
+# 基于下一代全局状态插件(推荐，我也是基于它开发的。)
+npm i pinia
+```
+
