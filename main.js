@@ -2,6 +2,11 @@ import App from './App'
 import {
 	$http
 } from "@escook/request-miniprogram"
+
+
+import * as Pinia from 'pinia';
+
+
 // 挂载uni对象上
 uni.$http = $http
 // 请求拦截器
@@ -50,7 +55,8 @@ import {
 export function createApp() {
 	const app = createSSRApp(App)
 	return {
-		app
+		app,
+		Pinia, // 此处必须将 Pinia 返回
 	}
 }
 // #endif
