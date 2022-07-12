@@ -28,3 +28,15 @@ chameleon框架（推荐，原生支持跨端开发）
 
 项目文件结构
 
+
+
+
+
+
+
+推荐网路请求包
+
+```
+npm install @escook/request-miniprogram
+```
+

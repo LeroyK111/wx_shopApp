@@ -1,0 +1,23 @@
+{
+  "name": "wx_shopapp",
+  "version": "1.0.0",
+  "description": "官网地址",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeroyK111/wx_shopApp.git"
+  },
+  "keywords": [],
+  "author": "LeroyK <bridieiybnf@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LeroyK111/wx_shopApp/issues"
+  },
+  "homepage": "https://github.com/LeroyK111/wx_shopApp#readme",
+  "dependencies": {
+    "@escook/request-miniprogram": "^0.2.1"
+  }
+}
