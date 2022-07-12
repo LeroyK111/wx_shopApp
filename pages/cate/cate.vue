@@ -1,5 +1,7 @@
 <template>
 	<view>
+		<!-- 使用自定义搜索组件 -->
+		<my-search @myclick="gotoSearch"></my-search>
 		<view class="scroll-view-container">
 			<!-- 左侧滑动效果 -->
 			<scroll-view class="left-scroll" scroll-y="true" :style="{height: wh + 'px'}">
@@ -48,7 +50,7 @@
 			// 获取客户端信息
 			const sysInfo = uni.getWindowInfo()
 			// console.log(sysInfo);
-			this.wh = sysInfo.windowHeight
+			this.wh = sysInfo.windowHeight - 60
 			// 获取分类数据
 			this.getCateList()
 		},
@@ -84,6 +86,12 @@
 					url:"/subpkg/goods_list/goods_list?/cid=" + item3.cat_id
 				})
 				
+			},
+			gotoSearch(){
+				// 搜索框跳转
+				uni.navigateTo({
+					url:"/subpkg/search/search"
+				})
 			}
 		}
 	}

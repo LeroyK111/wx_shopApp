@@ -1,5 +1,11 @@
 <template>
 	<view class="">
+		<!-- 搜索框-->
+		<!-- 构建吸顶效果 -->
+		<view class="search-box">
+			<my-search @myclick="gotoSearch"></my-search>
+		</view>
+
 		<!-- 轮播图 -->
 		<swiper :circular="true" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
 			<swiper-item v-for="(item, i) in switperList" :key="i">
@@ -28,7 +34,8 @@
 					</navigator>
 					<!-- 右侧小盒子 -->
 					<view class="right-img-box">
-						<navigator :url="item2.url" class="right-img-item" v-for="(item2, i2) in item.product_list" :key="i2" v-show="i2!==0">
+						<navigator :url="item2.url" class="right-img-item" v-for="(item2, i2) in item.product_list"
+							:key="i2" v-show="i2!==0">
 							<image :src="item2.image_src" :style="{width: item2.image_width + 'rpx'}" mode="widthFix">
 							</image>
 						</navigator>
@@ -105,13 +112,19 @@
 				})
 
 				this.floorList = res.message
+			},
+			gotoSearch() {
+				// 搜索框跳转
+				uni.navigateTo({
+					url: "/subpkg/search/search"
+				})
 			}
 
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.swiper {
 		height: 330rpx;
 	}
@@ -142,5 +155,12 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-around;
+	}
+
+	.search-box {
+		// 粘性定位
+		position: sticky;
+		top: 0;
+		z-index: 999;
 	}
 </style>
