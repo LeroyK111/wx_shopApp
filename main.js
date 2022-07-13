@@ -35,7 +35,7 @@ uni.$showMsg = function(title = "数据请求失败") {
 	})
 }
 
-
+// #//ifndef 这种语法是，uni-app专用判断语法，决定导入哪个包
 // #ifndef VUE3
 import Vue from 'vue'
 Vue.config.productionTip = false
@@ -54,9 +54,13 @@ import {
 } from 'vue'
 export function createApp() {
 	const app = createSSRApp(App)
+	// 挂载插件
+	app.use(Pinia.createPinia())
 	return {
 		app,
-		Pinia, // 此处必须将 Pinia 返回
+		Pinia,
 	}
 }
+
+
 // #endif

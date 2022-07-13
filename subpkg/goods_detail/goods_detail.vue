@@ -36,23 +36,31 @@
 </template>
 
 <script>
-	export default {
+	// 导入状态插件
+	import {
+		useCartStore
+	} from "@/store/cart.js"
+	// 实例化一个对象
+	const useCart = useCartStore()
 
+	export default {
 		data() {
 			return {
 				goods_info: {},
 				options: [{
 					icon: 'headphones',
-					text: '客服'
+					text: '客服',
+					info: null
 				}, {
 					icon: 'shop',
 					text: '店铺',
 					infoBackgroundColor: '#007aff',
-					infoColor: "red"
+					infoColor: "red",
+					info: null
 				}, {
 					icon: 'cart',
 					text: '购物车',
-					info: 9
+					info: null
 				}],
 				buttonGroup: [{
 						text: '加入购物车',
@@ -71,6 +79,28 @@
 			const goods_id = options.goods_id
 			// 获取商品详情数据
 			this.getGoodsDetail(goods_id)
+		},
+		computed: {
+			// 直接传入计算结果
+			total() {
+				return useCart.total
+			}
+		},
+
+		watch: {
+			// 监听计算属性
+			total: {
+				// total必须开启初次监听
+				handler(newval) {
+					const findResult = this.options.find(x => x.text === '购物车')
+					if (findResult) {
+						// 重新赋值
+						findResult.info = newval
+					}
+				},
+				// 开启初次加载即监听
+				immediate: true
+			}
 		},
 		methods: {
 			async getGoodsDetail(goods_id) {
@@ -99,16 +129,30 @@
 			},
 
 			onClick(e) {
-				if (e.content.text == "购物车"){
+				if (e.content.text == "购物车") {
 					uni.switchTab({
-						url:"/pages/cart/cart"
+						url: "/pages/cart/cart"
 					})
 				}
 			},
 			buttonClick(e) {
-				console.log(e)
-				this.options[2].info++
-			}
+				// 判断是什么操作，
+				if (e.content.text == "加入购物车") {
+					// 创建商品信息简化对象，方便取用
+					const goods = {
+						goods_id: this.goods_info.goods_id,
+						goods_name: this.goods_info.goods_name,
+						goods_price: this.goods_info.goods_price,
+						// 默认商品数量为1
+						goods_count: 1,
+						goods_small_logo: this.goods_info.goods_small_logo,
+						goods_state: true
+					}
+
+					// 直接调用
+					useCart.addToCart(goods)
+				}
+			},
 		}
 	}
 </script>
@@ -159,7 +203,7 @@
 			margin: 10px 0;
 		}
 	}
-	
+
 	// 导航
 	.goods_nav {
 		width: 100%;
@@ -167,7 +211,7 @@
 		bottom: 0;
 		left: 0;
 	}
-	
+
 	.goods-detail-container {
 		padding-bottom: 50px;
 	}

@@ -47,7 +47,11 @@
 </template>
 
 <script>
+	// 导入需要的mixin文件
+	import tabbar_badge from "@/mixins/tabbar-badge.js"
 	export default {
+		// 直接生效
+		mixins: [tabbar_badge],
 		name: "Home",
 		data() {
 			return {
