@@ -50,7 +50,7 @@ export const useCartStore = defineStore('cart', {
 			// 存储数据
 			this.savaToStorage(this.carts)
 		},
-		// 什么持久化存储的方法
+		// 持久化存储的方法
 		savaToStorage(carts) {
 			uni.setStorageSync("carts", JSON.stringify(carts))
 		},

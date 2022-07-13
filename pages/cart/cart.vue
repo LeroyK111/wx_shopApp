@@ -1,9 +1,8 @@
 <template>
 	<view class="">
-		<view class="cart-shops" v-if="carts.length !==0">
+		<view class="cart-shops" v-if="carts.length !== 0">
 			<!-- 收获地址地址 -->
 			<my-address></my-address>
-
 			<!-- 标题区域 -->
 			<view class="cart-title">
 				<!-- 左侧图标 -->
@@ -28,7 +27,7 @@
 			<my-settle></my-settle>
 		</view>
 		<!-- 空白购物车选项 -->
-		<view class="empty-cart" v-else :style="{height:emptyHight + 'px'}">
+		<view class="empty-cart" :style="{height:emptyHight + 'px'}" v-else>
 			<image src="/static/kong.png" mode="widthFix"></image>
 			<text>你的购物车空空如也...</text>
 		</view>
@@ -83,8 +82,6 @@
 				useCart.removeGoodsBid(goods.goods_id)
 			}
 		}
-
-
 	}
 </script>
 
