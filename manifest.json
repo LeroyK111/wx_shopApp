@@ -55,12 +55,12 @@
     "mp-weixin" : {
         "appid" : "wx132bf90f74e46d28",
         "setting" : {
-            "urlCheck" : true
+            "urlCheck" : false
         },
         "usingComponents" : true,
         "permission" : {
             "scope.userLocation" : {
-                "desc" : "测试"
+                "desc" : "测试罢了"
             }
         },
         "uniStatistics" : {
