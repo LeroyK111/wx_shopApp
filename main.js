@@ -7,7 +7,9 @@ import {
 import * as Pinia from 'pinia';
 
 // 使用状态中间件
-import {useUserStore} from "@/store/user.js"
+import {
+	useUserStore
+} from "@/store/user.js"
 
 
 // 挂载uni对象上
@@ -17,7 +19,7 @@ $http.beforeRequest = function(options) {
 	uni.showLoading({
 		title: "数据加载中"
 	})
-	
+
 	const useUser = useUserStore()
 
 	if (options.url.indexOf("/my/") !== -1) {
@@ -25,7 +27,7 @@ $http.beforeRequest = function(options) {
 		options.header = {
 			Authorization: useUser.token
 		}
-	} 
+	}
 }
 
 
@@ -44,7 +46,7 @@ $http.baseUrl = "https://www.uinav.com"
 uni.$showMsg = function(title = "数据请求失败") {
 	uni.showToast({
 		title: title,
-		icon:'error'
+		icon: 'error'
 	})
 }
 
